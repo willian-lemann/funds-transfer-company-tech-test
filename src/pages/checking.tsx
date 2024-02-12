@@ -5,7 +5,7 @@ import { Layout } from "@/components/layout";
 import dayjs from "dayjs";
 
 import { cn, formatMoney } from "@/lib/utils";
-import { ArrowDown, ArrowUp, Check } from "lucide-react";
+import { ArrowDown, ArrowUp } from "lucide-react";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 type CheckingProps = {

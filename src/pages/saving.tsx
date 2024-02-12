@@ -1,12 +1,11 @@
-import { getCheckingHistory } from "@/app/api/get-checking-history";
 import { INCOME } from "@/app/types/accounts";
 import { Layout } from "@/components/layout";
 
 import dayjs from "dayjs";
 
 import { cn, formatMoney } from "@/lib/utils";
-import { ArrowDown, ArrowUp, Check } from "lucide-react";
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import { ArrowDown, ArrowUp } from "lucide-react";
+import { GetServerSideProps } from "next";
 import { getSavingHistory } from "@/app/api/get-saving-history";
 
 type CheckingProps = {

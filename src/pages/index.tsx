@@ -1,23 +1,16 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 import { ChevronRightIcon } from "lucide-react";
-import {
-  CreditCardIcon,
-  DollarSignIcon,
-  Package2Icon,
-} from "@/components/icons";
+import { CreditCardIcon, DollarSignIcon } from "@/components/icons";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 import { getAccounts } from "@/app/api/get-account";
 import { z } from "zod";
 import { FormProvider, useForm } from "react-hook-form";
-import { Sidebar } from "@/components/sidebar";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { toastNotification } from "@/lib/alert";
-import { Loading } from "@/components/loading";
-import { transferService } from "@/app/api/transfer";
+
 import { AccountData } from "@/app/types/accounts";
 import { accountsStore } from "@/store/accounts-store";
 import { Layout } from "@/components/layout";

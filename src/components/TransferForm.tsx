@@ -113,6 +113,7 @@ export function TransferForm() {
               <Label>
                 <span>Amount</span>
                 <Input
+                  data-testid="input-amount"
                   className="mt-1 form-input"
                   placeholder="0.00"
                   type="number"
@@ -120,13 +121,16 @@ export function TransferForm() {
                   {...register("amount")}
                 />
 
-                <span className="text-red-400 text-xs opacity-70">
+                <span
+                  data-testid="error-input-amount"
+                  className="text-red-400 text-xs opacity-70"
+                >
                   {errors.amount?.message}
                 </span>
               </Label>
             </div>
           </div>
-          <Button type="submit" className="mt-4">
+          <Button data-testid="transfer-button" type="submit" className="mt-4">
             {isSubmitting ? <Loading /> : "Transfer"}
           </Button>
         </form>
