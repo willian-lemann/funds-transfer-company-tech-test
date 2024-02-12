@@ -1,14 +1,5 @@
 import db from "../lib/db";
-
-type Checking = { amount: number; id: string } | null;
-type Saving = { amount: number; id: string } | null;
-type User = { id: string; name: string } | null;
-
-export type AccountData = {
-  user: User;
-  saving: Saving;
-  checking: Checking;
-};
+import { AccountData } from "../types/accounts";
 
 export async function getAccounts() {
   const data = await db.user.findFirst({

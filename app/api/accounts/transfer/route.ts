@@ -4,6 +4,7 @@ import { INCOME, OUTCOME } from "@/app/types/accounts";
 
 export async function POST(req: Request, res: Response) {
   const body = await req.json();
+
   const { fromAccount, toAccount, amount } = body;
 
   if (fromAccount.id === toAccount.id) {
@@ -12,6 +13,7 @@ export async function POST(req: Request, res: Response) {
     });
   }
 
+  console.log(amount, fromAccount.amount);
   if (amount > fromAccount.amount) {
     return new Response("You don't have much money to send", { status: 404 });
   }
@@ -25,7 +27,7 @@ export async function POST(req: Request, res: Response) {
         amount: newAmountChecking,
         checkingHistory: {
           connectOrCreate: {
-            create: { amountTransfered: amount, type: OUTCOME },
+            create: { amountTransfered: +amount, type: OUTCOME },
             where: { id: data?.checking?.id },
           },
         },
@@ -40,7 +42,7 @@ export async function POST(req: Request, res: Response) {
         amount: newAmountSaving,
         savingHistory: {
           connectOrCreate: {
-            create: { type: INCOME, amountTransfered: amount },
+            create: { type: INCOME, amountTransfered: +amount },
             where: { id: data?.saving?.id },
           },
         },
@@ -61,7 +63,7 @@ export async function POST(req: Request, res: Response) {
         amount: newAmountSaving,
         savingHistory: {
           connectOrCreate: {
-            create: { amountTransfered: amount, type: OUTCOME },
+            create: { amountTransfered: +amount, type: OUTCOME },
             where: { id: data?.saving?.id },
           },
         },
@@ -74,7 +76,7 @@ export async function POST(req: Request, res: Response) {
         amount: newAmountChecking,
         checkingHistory: {
           connectOrCreate: {
-            create: { amountTransfered: amount, type: INCOME },
+            create: { amountTransfered: +amount, type: INCOME },
             where: { id: data?.checking?.id },
           },
         },
